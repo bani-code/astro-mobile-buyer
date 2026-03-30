@@ -1,0 +1,16 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "astro-skills",
+  "description": "Custom skills for AstroSystem design workflow by Astri Harbaniansyah",
+  "owner": {
+    "name": "Astri Harbaniansyah"
+  },
+  "plugins": [
+    {
+      "name": "astro-figma",
+      "description": "Enforces AstroSystem design rules for all Figma tasks — AstroSystem components, Astro Icon library, style tokens by name (never hex), 1:1 faithful design.",
+      "source": "./plugins/astro-figma",
+      "category": "design"
+    }
+  ]
+}
