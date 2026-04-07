@@ -6,8 +6,6 @@
 |---|---|
 | Atoms - AstroSystem | `OBcknzjp4ZzNLuLWeMsuP4` |
 | Astro Icon & Illustration | `tWd29HOmovgLvK5NdqbxB0` |
-| Target canvas (Test file) | `n5K0Da0g4Z8nbpPMN0zjbh` |
-| Target canvas page | `76:3098` ("Claude to Figma") |
 
 ---
 
