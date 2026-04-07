@@ -97,7 +97,25 @@ Take `get_screenshot` and compare to original. Fix misalignments.
 
 ### Step 1 — Get design via `get_design_context`
 
-### Step 2 — Map tokens to CSS variables (never hex)
+### Step 2 — Export all image assets from the design (MANDATORY)
+Before writing any code, identify and export every image asset in the design:
+- Scan the design for all image fills, illustrations, photos, and custom graphics
+- For each image node, call `get_screenshot` with the node ID to capture it
+- Save each asset to `/assets/images/` in the project with a descriptive filename (e.g. `banner-promo.png`, `product-thumbnail.png`)
+- Icons from Astro Icon library do NOT need to be exported — use them as components in code
+- Custom illustrations and photos MUST be exported so the preview matches Figma exactly
+
+```
+// Asset export checklist:
+// ✅ Photos, product images → export as .png to /assets/images/
+// ✅ Custom illustrations → export as .png to /assets/images/
+// ✅ Background images → export as .png to /assets/images/
+// ✅ Astro Icons → use <IcName /> component, no export needed
+// ❌ NEVER reference images with placeholder URLs (picsum, lorem pixel, etc.)
+// ❌ NEVER use broken image paths — if asset can't be exported, say so
+```
+
+### Step 3 — Map tokens to CSS variables (never hex)
 ```css
 /* ✅ correct */
 color: var(--textColor-primaryDark);
@@ -107,9 +125,17 @@ background: var(--bgColor-light);
 color: #1A1A2E;
 ```
 
-### Step 3 — Use AstroSystem components in code (Button, Chips, etc.)
-### Step 4 — Use Astro Icon components (`<IcHub />`, `<IcTime />`, etc.)
-### Step 5 — Match spacing, radius, font size exactly — no improvisation
+### Step 4 — Use AstroSystem components in code (Button, Chips, etc.)
+### Step 5 — Use Astro Icon components (`<IcHub />`, `<IcTime />`, etc.)
+### Step 6 — Reference exported assets in code using local paths
+```jsx
+// ✅ correct — local asset
+<img src="/assets/images/banner-promo.png" alt="Promo banner" />
+
+// ❌ wrong — placeholder or broken URL
+<img src="https://picsum.photos/..." />
+```
+### Step 7 — Match spacing, radius, font size exactly — no improvisation
 
 ## Quick Token Cheatsheet
 
