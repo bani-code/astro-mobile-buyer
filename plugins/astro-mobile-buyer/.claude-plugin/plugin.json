@@ -1,0 +1,7 @@
+{
+  "name": "astro-mobile-buyer",
+  "description": "Enforces Astro Mobile Buyer design rules for all Figma tasks — always use Astro Mobile Buyer DS components, Astro Icon library, and style tokens by name (never hex). Triggers on any Figma design or code task.",
+  "author": {
+    "name": "Astri Harbaniansyah"
+  }
+}
