@@ -52,7 +52,7 @@ Ini adalah state ketika user tap pada search box:
 ## Rules Khusus Halaman Ini
 
 - Tidak ada Bottom Nav
-- Tidak ada Sticky Amount
+- Tidak ada CheckoutBar
 - Seluruh area di bawah header: konten search history yang scrollable
 - Saat keyboard aktif: konten di-push ke atas, keyboard fixed di bawah
 - Padding konten: **16px** kiri-kanan

@@ -150,7 +150,7 @@ Error & Failure selalu tampil sebagai **Bottom Sheet** di atas overlay:
 
 ---
 
-## Recipe 4: Sticky Amount
+## Recipe 4: CheckoutBar
 
 **Sumber:** `H55AMcAaJ1sK49u210M5sS`, node `292:19144`
 
@@ -165,7 +165,7 @@ Error & Failure selalu tampil sebagai **Bottom Sheet** di atas overlay:
 
 ### Struktur (keduanya sama)
 ```
-[ Sticky Amount — 360×64px ]
+[ CheckoutBar — 360×64px ]
   padding: top=8px, bottom=8px, left=16px, right=16px
   layout: HORIZONTAL, gap=16px, align CENTER
 
@@ -177,7 +177,7 @@ Error & Failure selalu tampil sebagai **Bottom Sheet** di atas overlay:
       ├── [Default] Icon button 40×40 — icCart Filled + Notification Hint badge
       └── [Cart] Button Primary Small — "Bayar" (128×40, radius=8)
 
-[ .Gimmick bar — 360×40px ] ← opsional, muncul di atas Sticky Amount
+[ .Gimmick bar — 360×40px ] ← opsional, muncul di atas CheckoutBar
   padding: top=8px, bottom=8px, left=16px, right=16px
   layout: HORIZONTAL, gap=8px
   isi: icVoucher + teks promo + icChevronDown + countdown timer
@@ -186,7 +186,7 @@ Error & Failure selalu tampil sebagai **Bottom Sheet** di atas overlay:
 ### Aturan Kemunculan
 - **Type=Default**: muncul saat ada produk dalam konteks halaman listing. Tidak muncul bersamaan dengan Bottom Nav.
 - **Type=Cart**: muncul di Cart page, tepat di atas Bottom Nav (keduanya visible bersamaan).
-- **.Gimmick bar**: opsional — tampil di atas Sticky Amount saat ada promo aktif.
+- **.Gimmick bar**: opsional — tampil di atas CheckoutBar saat ada promo aktif.
 
 ---
 

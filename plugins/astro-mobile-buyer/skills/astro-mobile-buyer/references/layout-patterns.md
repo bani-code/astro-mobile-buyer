@@ -76,7 +76,7 @@ Format: `[ Judul Section ]` + `[ "Lihat Semua" / icon ArrowRight ]`
 
 ## 5. Sticky Elements
 
-### Sticky Amount (Bottom Action Bar)
+### CheckoutBar (Bottom Action Bar)
 - Sumber komponen: file Molecules `H55AMcAaJ1sK49u210M5sS`, node `292:17548`
 - **Height: 64px**
 - **Padding: top 8px | bottom 8px | left 16px | right 16px**
@@ -84,7 +84,7 @@ Format: `[ Judul Section ]` + `[ "Lihat Semua" / icon ArrowRight ]`
 - Layout: HORIZONTAL, vertikal center
 - Isi kiri: `payment` frame (VERTICAL) — label "Subtotal" (`Body/Tiny`, 12px) + harga + info hemat
 - Isi kanan: icon button 40×40 (padding 8px) — icCart filled + Notification Hint badge
-- Opsional di atas Sticky Amount: `.Gimmick` bar (height 40px, padding 8px top/bottom, 16px left/right) — promo info + countdown
+- Opsional di atas CheckoutBar: `.Gimmick` bar (height 40px, padding 8px top/bottom, 16px left/right) — promo info + countdown
 - **Posisi: menggantikan Bottom Nav** — keduanya tidak muncul bersamaan di layar yang sama
 
 ### Sticky Header

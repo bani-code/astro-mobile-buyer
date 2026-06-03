@@ -35,7 +35,7 @@
 
 ─────────────── fixed bottom ─────────────────────────
 [ .Gimmick bar — 40px ]             ← opsional, hanya saat ada promo
-[ Sticky Amount — 56px ]            ← "+ Keranjang" CTA, tanpa Bottom Nav
+[ CheckoutBar — 56px ]            ← "+ Keranjang" CTA, tanpa Bottom Nav
 ```
 
 ---
@@ -43,7 +43,7 @@
 ## Catatan Kritis PDP
 
 - **Top Nav FLOATING** di atas image — bukan di bawah status bar, overlap dengan gambar produk
-- **Tidak ada Bottom Nav** — digantikan Sticky Amount
+- **Tidak ada Bottom Nav** — digantikan CheckoutBar
 - Image area: **360×360px**, full width, no margin
 - Setelah image area: konten diberi padding **16px kiri-kanan**
 - Countdown Timer: hanya muncul saat produk ada flash sale aktif
@@ -54,8 +54,8 @@
 
 - Padding konten (setelah image): 16px kiri & kanan
 - Antar sub-section dalam konten: 8–12px
-- Sticky Amount height: 56px (pad 8px top/bottom, 16px left/right)
-- Gimmick bar (opsional): 40px, muncul tepat di atas Sticky Amount
+- CheckoutBar height: 56px (pad 8px top/bottom, 16px left/right)
+- Gimmick bar (opsional): 40px, muncul tepat di atas CheckoutBar
 
 ---
 
@@ -65,7 +65,7 @@
 - `Carousel Indicator` (On White Bg, Quantity=>6)
 - `Label` (promo/diskon badge di image)
 - `Divider 1px` (di atas sticky amount)
-- Sticky Amount custom (`_sticky amount/ master`, h=56px)
+- CheckoutBar custom (`_sticky amount/ master`, h=56px)
 - `Product Card Large` (di carousel "Produk Serupa")
 
 ---
@@ -73,7 +73,7 @@
 ## Rules Khusus PDP
 
 - Top Nav bersifat **floating/transparent** di awal scroll, bisa berubah solid saat scroll ke bawah
-- CTA utama: **"+ Keranjang"** di Sticky Amount (bukan di body konten)
+- CTA utama: **"+ Keranjang"** di CheckoutBar (bukan di body konten)
 - Carousel image: swipe horizontal, indicator di pojok kanan bawah image
 - Section "Produk Serupa": horizontal scroll, Product Card Large
 - Tidak ada Bottom Navigation di halaman ini

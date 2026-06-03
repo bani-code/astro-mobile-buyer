@@ -19,7 +19,7 @@
       padding kiri-kanan: 16px
 ─────────────── fixed bottom ─────────────────────────
 [ .Gimmick bar — 40px ]             ← opsional, hanya saat ada promo aktif
-[ Sticky Amount Type=Default — 64px ]
+[ CheckoutBar Type=Default — 64px ]
 ```
 
 ---
@@ -29,7 +29,7 @@
 - Total sticky header: **160px** (44px Status Bar + 56px SearchBox + 60px Filter Bar)
 - Filter bar: padding **16px top/bottom**, **8px left** — horizontal scroll untuk chip filter
 - Product grid: padding **16px** kiri-kanan, gap horizontal **12px**, gap vertikal **10px**
-- Sticky Amount (Type=Default): fixed di bottom, **menggantikan** Bottom Nav
+- CheckoutBar (Type=Default): fixed di bottom, **menggantikan** Bottom Nav
 
 ---
 
@@ -52,7 +52,7 @@
 - `Top Bar → Type=SearchBox` (state=Filled)
 - `Alert` component (filter/sort chips area)
 - `Product Card Large` (Type=Default, Type=OOS)
-- `Sticky Amount` (Type=Default) — dengan .Gimmick opsional
+- `CheckoutBar` (Type=Default) — dengan .Gimmick opsional
 
 ---
 
@@ -72,8 +72,8 @@
 ## Rules Khusus Halaman Ini
 
 - **Background frame utama: `BackgroundColor/Light`** — wajib, bukan default abu-abu Figma
-- **Tidak ada Bottom Nav** — digantikan Sticky Amount Type=Default
+- **Tidak ada Bottom Nav** — digantikan CheckoutBar Type=Default
 - Header (Status Bar + SearchBox + Filter Bar) bersifat **sticky** saat scroll
-- Sticky Amount bersifat **fixed** di bottom
+- CheckoutBar bersifat **fixed** di bottom
 - Saat produk OOS: tampilkan `Type=OOS` card dengan CTA "Lihat Produk Serupa"
 - Filter bar: horizontal scroll — chip-chip filter dan tombol sort

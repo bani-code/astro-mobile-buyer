@@ -1,7 +1,0 @@
-{
-  "name": "astro-figma",
-  "description": "Enforces AstroSystem design rules for all Figma tasks — always use AstroSystem components, Astro Icon library, and style tokens by name (never hex). Triggers on any Figma design or code task.",
-  "author": {
-    "name": "Astri Harbaniansyah"
-  }
-}

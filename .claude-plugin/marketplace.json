@@ -1,15 +1,15 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "astro-skills",
-  "description": "Custom skills for AstroSystem design workflow by Astri Harbaniansyah",
+  "name": "astro-mobile-buyer",
+  "description": "Astro Mobile Buyer Design System skill for Claude Code — enforces DS components, icon library, color tokens, and design rules for all Figma and code tasks.",
   "owner": {
     "name": "Astri Harbaniansyah"
   },
   "plugins": [
     {
-      "name": "astro-figma",
-      "description": "Enforces AstroSystem design rules for all Figma tasks — AstroSystem components, Astro Icon library, style tokens by name (never hex), 1:1 faithful design.",
-      "source": "./plugins/astro-figma",
+      "name": "astro-mobile-buyer",
+      "description": "Enforces Astro Mobile Buyer DS rules for all Figma tasks — DS components, Astro Icon library, color & size tokens by name (never hex), 1:1 faithful design. Supports push to Figma, implement to code, design review, code review, and UX flow review.",
+      "source": "./plugins/astro-mobile-buyer",
       "category": "design"
     }
   ]
