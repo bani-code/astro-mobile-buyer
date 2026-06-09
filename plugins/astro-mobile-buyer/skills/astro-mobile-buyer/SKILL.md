@@ -637,6 +637,26 @@ Identifikasi:
 - PWP (Purchase With Purchase) flow ter-cover jika relevan?
 - Promo/voucher flow ter-cover jika relevan?
 
+### Step 3b — Buyer Lens (WAJIB jika fitur adalah buyer-facing)
+
+Load `knowledge/buyer-personas.md`. Identifikasi persona target dari PRD atau konteks. Evaluasi flow dari sudut pandang persona tersebut:
+
+**Pertanyaan per persona:**
+- Apakah jumlah step sudah sesuai dengan patience level persona ini? (New Parent SOS → harus minimal; Impulse Snacker → harus satu tap; Family Feeder → boleh lebih panjang asal terasa lengkap)
+- Apakah empty state / error message sudah bicara dalam bahasa yang resonan dengan persona ini?
+- Apakah ada momen di flow ini yang akan membuat persona ini drop off?
+- Apakah visual hierarchy membantu persona ini menemukan apa yang mereka butuhkan dengan cepat?
+
+**Output tambahan:**
+```
+👤 BUYER LENS — [nama persona]
+✅ SERVES    Flow checkout minimal — sesuai untuk SOS persona
+❌ FRICTION  OOS state tidak kasih alternatif produk — Family Feeder akan frustrated
+⚠️ RISK      Empty cart state terlalu "cold" — Impulse Snacker butuh curated suggestion
+```
+
+Jika tidak ada PRD dan persona tidak jelas, gunakan **Family Feeder** sebagai default (24% users, 30% GMV).
+
 ### Step 4 — Output report
 ```
 ✅ COVERED  Success state Checkout sudah ada
@@ -645,9 +665,14 @@ Identifikasi:
 ⚠️ GAP      Add to cart tidak ada feedback ke user (toast/notifikasi)
 ⚠️ GAP      Back dari Checkout ke Cart tidak ada CTA yang clear
 ✅ COVERED  Error state network sudah ter-handle
+
+👤 BUYER LENS — [persona]
+✅ SERVES    ...
+❌ FRICTION  ...
+⚠️ RISK      ...
 ```
 
-Tutup dengan **Summary**: total COVERED / MISSING / GAP + rekomendasi prioritas fix.
+Tutup dengan **Summary**: total COVERED / MISSING / GAP + BUYER LENS findings + rekomendasi prioritas fix.
 
 ---
 
@@ -696,6 +721,144 @@ UX  : X MISSING, X GAP, X COVERED
 🟢 Nice to have:
   - [item yang bisa diimprove]
 ```
+
+---
+
+## Workflow — PRD to UX Spec
+
+Translate sebuah PRD atau deskripsi fitur menjadi UX specification lengkap: screen flow, state map, copy table, edge cases.
+
+**Trigger phrases:** "buatkan UX spec dari PRD ini", "translate PRD ke UX", "generate UX spec", "uraikan flow dari PRD ini", "bikin screen flow dari PRD ini", "breakdown UX-nya"
+
+### Step 1 — Gather Input
+
+Baca PRD yang diberikan (file path atau paste di chat). Jika tidak ada PRD, minta deskripsi fitur minimal:
+- Apa yang bisa dilakukan user?
+- Siapa user-nya (buyer / mitra)?
+- Apa goal utama dari fitur ini?
+
+Juga load:
+- `knowledge/astro-context.md` — terminologi dan konteks bisnis
+- `knowledge/buyer-personas.md` — identifikasi persona yang relevan
+- `references/platform-rules.md` — rules mobile (navigation, header type, dll)
+- `references/screens.md` — peta semua screen yang ada (iOS source of truth)
+- `references/production-copy.md` — copy aktual production untuk reference copy table
+
+### Step 2 — Identifikasi Persona Target
+
+Dari PRD atau konteks, tentukan:
+- Ini untuk buyer, mitra, atau internal?
+- Jika buyer: persona mana yang paling relevan? (refer ke `knowledge/buyer-personas.md`)
+- Jika tidak jelas: default ke **Family Feeder**
+
+### Step 3 — Hasilkan UX Specification
+
+Structure output:
+
+**1. User Flow Overview**
+Narasi singkat end-to-end journey — dari trigger awal sampai success state.
+
+**2. Screen / State Map (ASCII)**
+```
+[Entry Point]
+    ↓
+[Screen A: nama]
+    ├─ tap CTA → [Screen B]
+    ├─ error → [Error State A]
+    └─ back → [Previous Screen]
+[Screen B: nama]
+    ├─ success → [Success State]
+    └─ OOS → [OOS State]
+```
+
+**3. Screen Specifications** — per screen:
+- **Default state** — konten dan layout saat normal
+- **Loading state** — feedback saat async operation
+- **Empty state** — saat tidak ada data (explain + next action)
+- **Error state(s)** — per jenis error (network, validation, OOS)
+- **Success state** — konfirmasi setelah action berhasil
+
+**4. Copy & Microcopy Table**
+| Screen | Element | Copy (BI/EN) | Notes |
+|--------|---------|-------------|-------|
+| Cart | Empty state headline | "Keranjangmu kosong" | Bahasa Indonesia |
+| Cart | Empty state CTA | "Mulai Belanja" | |
+| Checkout | Error payment | "Pembayaran gagal. Coba metode lain." | Spesifik + actionable |
+
+**5. Edge Cases & Error Handling**
+| Skenario | System Response |
+|----------|----------------|
+| Produk OOS saat checkout | Show alternatif produk serupa |
+| Jaringan putus | Offline state dengan retry CTA |
+| Session timeout | Redirect ke login + preserve cart |
+
+**6. Open UX Questions**
+List pertanyaan yang belum terjawab di PRD dan perlu konfirmasi PM / stakeholder.
+
+### Step 4 — Buyer Lens Check
+
+Evaluasi spec dari sudut pandang persona target:
+- Apakah jumlah screen dan step masuk akal untuk persona ini?
+- Apakah copy sudah resonan (tone, bahasa, urgency level)?
+- Apakah ada step yang akan membuat persona ini frustrated atau berhenti?
+
+### Step 5 — Save
+
+Simpan ke file jika diminta: `[nama-fitur]-ux-spec.md`
+Laporkan Open UX Questions yang perlu input.
+
+---
+
+## Workflow — Brand Voice Check
+
+Cek apakah copy di design (banner, empty state, error message, button label, CTA) sudah sesuai brand voice Astro.
+
+**Trigger phrases:** "cek copy ini sudah sesuai brand belum", "review tone of voice", "apakah copy ini on-brand?", "brand voice check", "cek bahasa di design ini"
+
+### Step 1 — Load brand context
+Baca `knowledge/brand-voice.md`.
+
+### Step 2 — Kumpulkan semua copy
+Dari Figma URL (`get_design_context`) atau dari paste langsung di chat.
+Kumpulkan semua user-facing string: headline, subheadline, body, CTA, label, error message, empty state.
+
+### Step 3 — Evaluasi per copy
+
+Untuk setiap string, cek:
+- **Bahasa benar?** (BI untuk buyer/mitra, EN untuk internal/admin)
+- **Tone sesuai?** (hangat, direct, tidak kaku, tidak alay)
+- **Panjang sesuai?** (banner headline max 20 karakter)
+- **Actionable?** (error message spesifik + ada next step)
+- **Button label action verb?** (bukan "OK" atau "Ya")
+- **Empty state ada penjelasan + CTA?**
+- **Confirmation dialog spesifik?** (bukan "Apakah kamu yakin?")
+
+### Step 4 — Output report
+```
+✅ ON-BRAND   Banner: "Promo Tanggal Tua" — benefit-first, BI ✓
+❌ OFF-BRAND  Error: "Terjadi kesalahan" — tidak spesifik, tidak actionable
+              Fix: "Pembayaran gagal. Coba lagi atau gunakan metode lain."
+⚠️ REVIEW    CTA: "OK" — ganti dengan action verb seperti "Mengerti" atau "Lanjutkan"
+❌ OFF-BRAND  Empty state: "Data tidak tersedia" — tidak ada penjelasan + tidak ada next action
+              Fix: "Belum ada pesanan. Mulai belanja dan pesan pertamamu!"
+```
+
+Tutup dengan **Summary**: total ON-BRAND / OFF-BRAND / REVIEW + prioritas fix.
+
+---
+
+## Knowledge Files — Cara Pakai
+
+Skill ini punya 3 knowledge file yang bisa dipanggil kapan saja:
+
+| File | Isi | Trigger |
+|------|-----|---------|
+| `knowledge/buyer-personas.md` | 20 buyer personas, data real | *"review dari perspektif buyer"*, *"persona mana yang pakai fitur ini?"*, *"apakah ini cocok untuk [persona]?"* |
+| `knowledge/brand-voice.md` | Brand voice, copy rules, tone BI/EN, button labels, status labels, logo rules | *"apakah copy ini on-brand?"*, *"apa bahasa yang tepat untuk ini?"*, *"brand voice check"* |
+| `knowledge/astro-context.md` | Company context, terminologi PRD, order flow, stakeholders, leadership | *"apa artinya [term]?"*, *"ini buat siapa?"*, *"jelaskan konteks bisnis"* |
+| `references/screens.md` | Peta lengkap semua screen Astro Buyer dari iOS source of truth — tab bar, full screen, bottom sheets | *"screen apa saja yang ada?"*, *"dari mana bisa ke screen ini?"*, *"navigation flow-nya gimana?"* |
+| `references/production-copy.md` | Semua copy production aktual dalam BI — error states, empty states, button labels, cart, promo | *"copy yang dipakai di app untuk ini apa?"*, *"gimana nulis error message yang sesuai?"* |
+| `references/design-tokens-ios.md` | Token system iOS (UniverseUI) — color scales, semantic tokens, component list, feature flags | *"token ini padanannya apa di Figma?"*, *"hex berapa primary color-nya?"* |
 
 ---
 
